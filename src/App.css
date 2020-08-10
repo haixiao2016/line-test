@@ -1,6 +1,12 @@
 .App{
   padding-top: 40px;
-  padding-right: 44px;
+  padding-right: 15px;
   padding-bottom: 21px;
-  padding-left: 44px;
+  padding-left: 15px;
+}
+@media screen and (orientation:landscape) {
+  .App {
+    padding-left: 44px;
+    padding-right: 44px;
+  }
 }
