@@ -1,24 +1,24 @@
+/*
+ * @Author: small
+ * @Description: 
+ * @Date: 2020-08-10 11:32:34
+ * @LastEditTime: 2020-08-10 11:54:05
+ * @FilePath: /line-test/src/App.js
+ */
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import liff from '@line/liff'
+import { Button, Divider } from 'antd'
+import 'antd/dist/antd.css';
+liff.init({ liffId: "1654651020-nRqoNOA9" })
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button type="primary" onClick={ ()=> alert(`isInClient: ${liff.isInClient()}`) }>isInClient</Button>
+      <Divider type="vertical" />
+      <Button type="primary" onClick={ ()=> alert(liff.getOS()) }>getOS</Button>
     </div>
   );
 }
