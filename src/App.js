@@ -2,7 +2,7 @@
  * @Author: small
  * @Description: 
  * @Date: 2020-08-10 11:32:34
- * @LastEditTime: 2020-08-11 15:22:10
+ * @LastEditTime: 2020-08-11 15:26:24
  * @FilePath: /line-test/src/App.js
  */
 import React, { useEffect } from 'react';
@@ -24,7 +24,7 @@ const liffId = '1654651020-nRqoNOA9'
 function handleGetUserInfo() {
   lineInit({ liffId }).then(_=> {
     lineLogin({
-      redirectUri: "https://www.haixiao.online"
+      redirectUri: "https://www.haixiao.online/"
     })
   }).catch(err=> {
     console.log(err)
