@@ -2,7 +2,7 @@
  * @Author: small
  * @Description: 
  * @Date: 2020-08-10 11:32:34
- * @LastEditTime: 2020-08-11 15:30:54
+ * @LastEditTime: 2020-08-11 15:36:45
  * @FilePath: /line-test/src/App.js
  */
 import React, { useEffect } from 'react';
@@ -39,7 +39,7 @@ function App() {
       const s = {
         grant_type: "authorization_code",
         code: code,
-        redirect_uri: "https://www.haixiao.online",
+        redirect_uri: "https%3A%2F%2Fwww.haixiao.online",
         client_id: "1654651020",
         client_secret: "739c9f5d192273bc77828d9646f2689c"
       }
