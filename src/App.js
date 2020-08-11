@@ -43,7 +43,14 @@ function App() {
         id_token_key_type: "JWK",
         redirect_uri: "https://www.haixiao.online",
         client_id: "1654651020",
-        client_secret: "739c9f5d192273bc77828d9646f2689c"
+        // client_secret: "739c9f5d192273bc77828d9646f2689c"
+        // grant_type: "authorization_code"
+        // client_id: 1654651020
+        // appId: "1654651020-nRqoNOA9"
+        // code: Ahf00uZ7YPRfQ5tKkkAF
+        // code_verifier: fR5Y1LSk0vuG0MbjzQydP8HU3YuJ4d0XsA4lBk2wurL
+        // redirect_uri: "https://www.haixiao.online"
+        // id_token_key_type: "JWK"
       }
       axios({
         method: "POST",
