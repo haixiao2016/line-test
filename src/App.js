@@ -56,6 +56,7 @@ function App() {
         method: "POST",
         url: "https://api.line.me/oauth2/v2.1/token",
         headers:{
+          "Accept": '*/*',
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
         },
         data: s
