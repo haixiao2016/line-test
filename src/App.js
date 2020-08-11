@@ -13,12 +13,6 @@ const getUrlParams = (queryName) => {
     return null
   }
 }
-var je = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-            function De(e) {
-                for (var t = "", n = 0; n < e; n++) t += je[Math.floor(Math.random() * je.length)];
-                return t
-            }
 const liffId = '1654651020-nRqoNOA9'
 function handleGetUserInfo() {
   lineInit({ liffId }).then(_=> {
@@ -35,31 +29,25 @@ function App() {
     const code = getUrlParams("code")
     if(code) {
       // 服务端请求
+      const loginTmp = JSON.parse(localStorage.getItem(`LIFF_STORE:${liffId}:loginTmp`)) || {}
       const s = {
         grant_type: "authorization_code",
         code: code,
-        code_verifier: De(43),
+        code_verifier: loginTmp.codeVerifier,
         appId: liffId,
         id_token_key_type: "JWK",
         redirect_uri: "https://www.haixiao.online",
-        client_id: "1654651020",
-        // client_secret: "739c9f5d192273bc77828d9646f2689c"
-        // grant_type: "authorization_code"
-        // client_id: 1654651020
-        // appId: "1654651020-nRqoNOA9"
-        // code: Ahf00uZ7YPRfQ5tKkkAF
-        // code_verifier: fR5Y1LSk0vuG0MbjzQydP8HU3YuJ4d0XsA4lBk2wurL
-        // redirect_uri: "https://www.haixiao.online"
-        // id_token_key_type: "JWK"
+        client_id: "1654651020"
       }
       axios({
         method: "POST",
         url: "https://api.line.me/oauth2/v2.1/token",
         headers:{
-          "Accept": '*/*',
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
         },
         data: s
+      }).then(res=> {
+        console.log(res)
       })
     }
   }, []);
