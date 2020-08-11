@@ -2,7 +2,7 @@
  * @Author: small
  * @Description: 
  * @Date: 2020-08-10 11:32:34
- * @LastEditTime: 2020-08-11 15:26:24
+ * @LastEditTime: 2020-08-11 15:30:54
  * @FilePath: /line-test/src/App.js
  */
 import React, { useEffect } from 'react';
@@ -24,7 +24,7 @@ const liffId = '1654651020-nRqoNOA9'
 function handleGetUserInfo() {
   lineInit({ liffId }).then(_=> {
     lineLogin({
-      redirectUri: "https://www.haixiao.online/"
+      redirectUri: "https://www.haixiao.online"
     })
   }).catch(err=> {
     console.log(err)
@@ -39,9 +39,9 @@ function App() {
       const s = {
         grant_type: "authorization_code",
         code: code,
-        redirect_uri: "https://www.haixiao.online/",
+        redirect_uri: "https://www.haixiao.online",
         client_id: "1654651020",
-        client_secret: "badc524e2361b4d97c171b2ddc94ac6e"
+        client_secret: "739c9f5d192273bc77828d9646f2689c"
       }
       axios({
         method: "POST",
