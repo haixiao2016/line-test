@@ -1,15 +1,7 @@
-/*
- * @Author: small
- * @Description: 
- * @Date: 2020-08-10 11:32:34
- * @LastEditTime: 2020-08-11 15:36:45
- * @FilePath: /line-test/src/App.js
- */
 import React, { useEffect } from 'react';
 import './App.css';
 import { init as lineInit, login as lineLogin } from '@line/liff'
 import { Button } from 'antd'
-import axios from 'axios'
 import 'antd/dist/antd.css';
 const getUrlParams = (queryName) => {
   const reg = new RegExp('(^|&)' + queryName + '=([^&]*)(&|$)', 'i')
@@ -36,21 +28,21 @@ function App() {
     const code = getUrlParams("code")
     if(code) {
       // 服务端请求
-      const s = {
-        grant_type: "authorization_code",
-        code: code,
-        redirect_uri: "https%3A%2F%2Fwww.haixiao.online",
-        client_id: "1654651020",
-        client_secret: "739c9f5d192273bc77828d9646f2689c"
-      }
-      axios({
-        method: "POST",
-        url: "https://api.line.me/oauth2/v2.1/token",
-        headers:{
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        data: s
-      })
+      // const s = {
+      //   grant_type: "authorization_code",
+      //   code: code,
+      //   redirect_uri: "https%3A%2F%2Fwww.haixiao.online",
+      //   client_id: "1654651020",
+      //   client_secret: "739c9f5d192273bc77828d9646f2689c"
+      // }
+      // axios({
+      //   method: "POST",
+      //   url: "https://api.line.me/oauth2/v2.1/token",
+      //   headers:{
+      //     'Content-Type': 'application/x-www-form-urlencoded'
+      //   },
+      //   data: s
+      // })
     }
   }, []);
   return (
