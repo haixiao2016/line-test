@@ -3,8 +3,8 @@
  * @Author: small
  * @Description: facebook login 
  * @Date: 2020-08-12 16:51:12
- * @LastEditTime: 2020-08-12 17:11:36
- * @FilePath: /signin-demo/src/facebookLogin.js
+ * @LastEditTime: 2020-08-12 17:15:30
+ * @FilePath: /line-test/src/facebookLogin.js
  */
 class FacebookLogin {
   constructor(options, success, error) {
@@ -25,7 +25,7 @@ class FacebookLogin {
   }
   InitFacebookButton() {
     FB.init({
-      appId            : 'your-app-id',
+      appId            : this.appId,
       autoLogAppEvents : true,
       xfbml            : true,
       version          : 'v8.0'
