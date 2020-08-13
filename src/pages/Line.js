@@ -22,7 +22,7 @@ function Line() {
   useEffect(() => {
     LiLogin = new LineLogin({
       liffId: "1654651020-nRqoNOA9",
-      redirectUri: "https://www.haixiao.online"
+      redirectUri: "https://www.haixiao.online/line"
     }, onSuccess, onError)
   }, []);
   return (

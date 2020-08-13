@@ -38,7 +38,7 @@ function App() {
   }, []);
   return (
     <div className="google">
-      <Button className="google-btn-signin" type="primary" loading={isLoading}>google login</Button>
+      <Button className="google-btn-signin" type="primary" onClick={()=> setLoading(true)} loading={isLoading}>google login</Button>
       {
         userData ?
           <Card
