@@ -5,6 +5,7 @@ class FacebookLogin {
     this.el = options.el
     this.success = success
     this.error = error
+    this.ready = false
     this.init()
   }
   init() {
@@ -16,6 +17,7 @@ class FacebookLogin {
     document.head.appendChild(facebookSignInAPI)
     facebookSignInAPI.onload = this.InitFacebookButton.bind(this)
   }
+
   InitFacebookButton() {
     FB.init({
       appId            : this.appId,
@@ -23,6 +25,10 @@ class FacebookLogin {
       xfbml            : true,
       version          : 'v8.0'
     })
+    this.ready = true
+  }
+  isReady() {
+    return this.ready
   }
   getLoginStatus() {
     let _this = this
@@ -36,6 +42,9 @@ class FacebookLogin {
     })
   }
   async login() {
+    if(!this.isReady()) {
+      setTimeout(this.login(), 100)
+    }
     const status = await this.getLoginStatus()
     if( status === "connected") return false;
     let _this = this
