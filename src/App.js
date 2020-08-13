@@ -29,7 +29,7 @@ function App() {
     }
   }, []);
   function getUserDataByFacebook(code) {
-    axios.get("https://api.haixiao.online/facebook/userInfo", {
+    axios.get("http://api.haixiao.online/facebook/userInfo", {
       params: {
         code
       }
