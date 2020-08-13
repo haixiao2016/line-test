@@ -6,6 +6,8 @@ import Line from "./pages/Line"
 import Google from "./pages/Google"
 import { Menu } from "antd";
 import { Route, BrowserRouter, Link } from "react-router-dom"
+import VConsole from "vconsole"
+new VConsole()
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
