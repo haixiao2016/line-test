@@ -18,6 +18,7 @@ function Line() {
     message.error("请求出错")
   }
   function onSuccess(access_token) {
+    setLoading(true)
     getUserInfo(access_token)
   }
   function getUserInfo(access_token) {
