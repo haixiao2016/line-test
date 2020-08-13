@@ -3,7 +3,7 @@
  * @Author: small
  * @Description: Line login 
  * @Date: 2020-08-13 17:28:20
- * @LastEditTime: 2020-08-13 17:58:16
+ * @LastEditTime: 2020-08-13 18:50:18
  * @FilePath: /line-test/src/SDK/lineLogin.js
  */
 /* eslint-disable no-undef */
@@ -36,11 +36,7 @@ class LineLogin {
     const code = getUrlParams("code")
     const liffClientId = getUrlParams("liffClientId")
     if(code && liffClientId) {
-      liff.getProfile().then(res=> {
-        this.onSuccess(res)
-      }).catch(err=> {
-        this.onError(err)
-      })
+      return liff.getAccessToken()
     }
   }
   login() {

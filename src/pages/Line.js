@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LineLogin from '../SDK/lineLogin';
 import { Button, Card, message } from 'antd';
+import axios from "axios";
 const { Meta } = Card;
 let LiLogin;
 
@@ -16,14 +17,30 @@ function Line() {
     setLoading(false)
     message.error("请求出错")
   }
-  function onSuccess(info) {
-    setUserData(info)
+  function onSuccess(access_token) {
+    getUserInfo(access_token)
+  }
+  function getUserInfo(access_token) {
+    axios.get("https://www.haixiao.online/api/line/userInfoBySDK", {
+      params: {
+        access_token
+      }
+    }).then(res => {
+      setUserData(res.data)
+    }).catch(err => {
+      if (err && err.error) {
+        message.error(err.error.message);
+      }
+    }).finally(() => {
+      setLoading(false)
+    })
   }
   useEffect(() => {
     LiLogin = new LineLogin({
       liffId: "1654651020-nRqoNOA9",
       redirectUri: "https://www.haixiao.online/line"
     }, onSuccess, onError)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="google">
