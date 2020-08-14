@@ -31,6 +31,7 @@ class FacebookLogin {
       version: 'v8.0'
     })
     console.log("初始化成功")
+    this.getLoginStatus()
     this.ready = true
   }
   isReady() {
