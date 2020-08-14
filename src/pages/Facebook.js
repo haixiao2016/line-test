@@ -63,7 +63,7 @@ function App() {
             </Card>
             <Button type="primary" danger onClick={handleLogout}>facebook logout</Button>
             <ReactJson style={{ marginTop: 40, marginBottom: 40 }} src={userData} enableClipboard={false} />
-          </> : <Button type="primary" onClick={handleSignin} loading={isLoading}>facebook login</Button>
+          </> : <Button type="primary" onClick={handleSignin}>facebook login</Button>
       }
     </div>
   );
