@@ -13,8 +13,7 @@ class FacebookLogin {
       return true
     }
     const facebookSignInAPI = document.createElement('script')
-    facebookSignInAPI.setAttribute('src', './js1.js')
-    // facebookSignInAPI.setAttribute('src', 'https://connect.facebook.net/en_US/sdk.js')
+    facebookSignInAPI.setAttribute('src', 'https://connect.facebook.net/en_US/sdk.js')
     facebookSignInAPI.setAttribute('crossorigin', 'anonymous')
     facebookSignInAPI.setAttribute('async', true)
     facebookSignInAPI.setAttribute('defer', true)
@@ -55,10 +54,8 @@ class FacebookLogin {
     }
     console.log("login 登录校验中----")
     const status = await this.getLoginStatus()
-    console.log(status)
     if (status === "connected") return false;
     console.log("手动登录 --- 跳转到登录页面")
-    console.log(window.FB.login)
     let _this = this
     window.FB.login(function (response) {
       if (response.authResponse) {
