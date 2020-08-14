@@ -51,10 +51,15 @@ class FacebookLogin {
       console.log("SDK 未加载完毕， 0.1s之后重试")
       return setTimeout(() => this.login(), 100)
     }
+    console.log("login 登录校验中----")
     const status = await this.getLoginStatus()
+    console.log(status)
     if (status === "connected") return false;
+    console.log("手动登录 --- 跳转到登录页面")
     let _this = this
     window.FB.login(function (response) {
+      console.log("login 出结果了 ----")
+      console.log(response)
       if (response.authResponse) {
         _this.success(response.authResponse)
       } else {
