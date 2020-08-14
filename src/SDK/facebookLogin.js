@@ -56,6 +56,7 @@ class FacebookLogin {
     console.log(status)
     if (status === "connected") return false;
     console.log("手动登录 --- 跳转到登录页面")
+    console.log(window.FB.login)
     let _this = this
     window.FB.login(function (response) {
       if (response.authResponse) {
