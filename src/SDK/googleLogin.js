@@ -2,7 +2,7 @@
  * @Author: small
  * @Description: google login
  * @Date: 2020-08-13 18:02:17
- * @LastEditTime: 2020-08-14 10:06:43
+ * @LastEditTime: 2020-08-14 10:29:02
  * @FilePath: /line-test/src/SDK/googleLogin.js
  */
 class GoogleLogin {
@@ -14,7 +14,7 @@ class GoogleLogin {
     this.init()
   }
   init() {
-    if(window.gapi) {
+    if (window.gapi) {
       this.InitGoogleButton()
       return true
     }
@@ -24,6 +24,7 @@ class GoogleLogin {
     googleSignInAPI.onload = this.InitGoogleButton.bind(this)
   }
   InitGoogleButton() {
+    console.log("SDK 加载完毕")
     const googleApi = window.gapi
     googleApi.load('auth2', () => {
       const auth2 = googleApi.auth2.init({
@@ -32,7 +33,7 @@ class GoogleLogin {
       })
       auth2.attachClickHandler(this.el, {
         scope: 'profile email'
-      },this.success, this.error)
+      }, this.success, this.error)
     })
   }
 }

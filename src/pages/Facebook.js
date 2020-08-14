@@ -1,10 +1,3 @@
-/*
- * @Author: small
- * @Description: 
- * @Date: 2020-08-13 17:25:22
- * @LastEditTime: 2020-08-13 18:15:42
- * @FilePath: /line-test/src/pages/Facebook.js
- */
 import React, { useEffect, useState } from 'react';
 import FacebookLogin from '../SDK/facebookLogin';
 import axios from "axios";
@@ -16,11 +9,11 @@ function App() {
   const [userData, setUserData] = useState(undefined);
   const [isLoading, setLoading] = useState(false)
 
-function handleSignin() {
-  setLoading(true)
-  fbLogIn.login()
-}
-  function onError(err) {
+  function handleSignin() {
+    setLoading(true)
+    fbLogIn.login()
+  }
+  function onError() {
     setLoading(false)
     message.error("取消授权或部分权限没有开启")
   }
@@ -28,7 +21,6 @@ function handleSignin() {
     getUserInfo(facebookUser)
   }
   function getUserInfo(facebookUser) {
-    
     axios.get("https://www.haixiao.online/api/facebook/userInfoBySDK", {
       params: {
         user_id: facebookUser.userID,
@@ -37,11 +29,11 @@ function handleSignin() {
     }).then(res => {
       setUserData(res.data)
     }).catch(err => {
-      if(err && err.error) {
+      if (err && err.error) {
         message.error(err.error.message);
       }
       console.log(err)
-    }).finally(()=> {
+    }).finally(() => {
       setLoading(false)
     })
   }
@@ -49,7 +41,7 @@ function handleSignin() {
     fbLogIn = new FacebookLogin({
       appId: "320868815625915",
     }, onSuccess, onError)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="google">

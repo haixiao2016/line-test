@@ -7,7 +7,8 @@ const { Meta } = Card;
 function App() {
   const [userData, setUserData] = useState(undefined);
   const [isLoading, setLoading] = useState(false)
-  function onError() {
+  function onError(err) {
+    console.log(err)
     setLoading(false)
     message.error("取消授权或部分权限没有开启")
   }
@@ -34,11 +35,11 @@ function App() {
       client_id: "326196238770-r5t1hc8dfkf80jhbckbvp7qous2kk7b8.apps.googleusercontent.com",
       el: document.querySelector(".google-btn-signin")
     }, onSuccess, onError)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="google">
-      <Button className="google-btn-signin" type="primary" onClick={()=> setLoading(true)} loading={isLoading}>google login</Button>
+      <Button className="google-btn-signin" type="primary" onClick={() => setLoading(true)} loading={isLoading}>google login</Button>
       {
         userData ?
           <Card

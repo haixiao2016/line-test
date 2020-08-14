@@ -8,7 +8,7 @@ class FacebookLogin {
     this.init()
   }
   init() {
-    if(window.FB) {
+    if (window.FB) {
       this.InitFacebookButton()
       return true
     }
@@ -22,12 +22,14 @@ class FacebookLogin {
   }
 
   InitFacebookButton() {
+    console.log("SDK 加载完毕")
     window.FB.init({
-      appId            : this.appId,
-      autoLogAppEvents : true,
-      xfbml            : true,
-      version          : 'v8.0'
+      appId: this.appId,
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: 'v8.0'
     })
+    console.log("初始化成功")
     this.ready = true
   }
   isReady() {
@@ -35,30 +37,31 @@ class FacebookLogin {
   }
   getLoginStatus() {
     let _this = this
-    return new Promise((resolve)=> {
-      window.FB.getLoginStatus(function(response) {
+    return new Promise((resolve) => {
+      window.FB.getLoginStatus(function (response) {
         resolve(response.status)
-        if(response.status === "connected") {
+        if (response.status === "connected") {
           _this.success(response.authResponse)
         }
       })
     })
   }
   async login() {
-    if(!this.isReady()) {
-      return setTimeout(()=> this.login(), 100)
+    if (!this.isReady()) {
+      console.log("SDK 未加载完毕， 0.1s之后重试")
+      return setTimeout(() => this.login(), 100)
     }
     const status = await this.getLoginStatus()
-    if( status === "connected") return false;
+    if (status === "connected") return false;
     let _this = this
-    window.FB.login(function(response) {
+    window.FB.login(function (response) {
       if (response.authResponse) {
         _this.success(response.authResponse)
       } else {
         _this.error()
-       console.log('User cancelled login or did not fully authorize.');
+        console.log('User cancelled login or did not fully authorize.');
       }
-  });
+    });
   }
 }
 

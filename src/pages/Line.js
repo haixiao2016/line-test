@@ -13,7 +13,8 @@ function Line() {
     setLoading(true)
     LiLogin.login()
   }
-  function onError() {
+  function onError(err) {
+    console.log(err)
     setLoading(false)
     message.error("请求出错")
   }
@@ -41,7 +42,7 @@ function Line() {
       liffId: "1654651020-nRqoNOA9",
       redirectUri: "https://www.haixiao.online/line"
     }, onSuccess, onError)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="google">

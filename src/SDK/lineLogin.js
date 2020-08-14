@@ -2,7 +2,7 @@
  * @Author: small
  * @Description: Line login 
  * @Date: 2020-08-13 17:28:20
- * @LastEditTime: 2020-08-14 10:16:33
+ * @LastEditTime: 2020-08-14 10:28:40
  * @FilePath: /line-test/src/SDK/lineLogin.js
  */
 import { getUrlParams } from "./common"
@@ -16,7 +16,7 @@ class LineLogin {
     this.init()
   }
   init() {
-    if(window.liff) {
+    if (window.liff) {
       this.InitLineButton()
       return true
     }
@@ -29,12 +29,15 @@ class LineLogin {
     signInAPI.onload = this.InitLineButton.bind(this)
   }
   InitLineButton() {
+    console.log("SDK 加载完毕，初始化进行中")
     window.liff.init({
       liffId: this.liffId
-    }).then(_=> {
+    }).then(_ => {
+      console.log("初始化成功")
       this.ready = true
       this.checkHasCode()
-    }).catch(err=> {
+    }).catch(err => {
+      console.log("初始化失败")
       this.ready = false
       this.onError(err)
     })
@@ -45,14 +48,14 @@ class LineLogin {
   checkHasCode() {
     const code = getUrlParams("code")
     const liffClientId = getUrlParams("liffClientId")
-    if(code && liffClientId) {
+    if (code && liffClientId) {
       return this.onSuccess(window.liff.getAccessToken())
     }
   }
   login() {
-    console.log("login")
-    if(!this.isReady()) {
-      return setTimeout(()=> this.login(), 100)
+    if (!this.isReady()) {
+      console.log("SDK 未加载完毕， 0.1s之后重试")
+      return setTimeout(() => this.login(), 100)
     }
     window.liff.login({
       redirectUri: this.redirectUri
