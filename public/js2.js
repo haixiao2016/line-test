@@ -2652,11 +2652,8 @@ try {
 
                   function i(a, c, d, e) {
                       return b("sdk.ErrorHandling").guard(function() {
-                        console.log(1111)
                           function f(a) {
-                            console.log(2222)
                               if (ES("Array", "isArray", !1, a)) return ES(a, "map", !0, f);
-                              console.log(4444)
                               return a && typeof a === "object" && a.__wrapped ? a.__wrapped : typeof a === "function" && /^function/.test(a.toString()) ? b("sdk.ErrorHandling").unguard(a) : a
                           }
                           var g = ES(Array.prototype.slice.call(arguments), "map", !0, f),
@@ -2672,7 +2669,8 @@ try {
                                   j[d] = i(l, c + ":" + d, d, h)
                               }
                           }
-                          console.log(3333)
+                          console.log(22222)
+                          console.log(!k ? j : k ? h : j)
                           return !k ? j : k ? h : j
                       }, c)
                   }
