@@ -6306,13 +6306,14 @@ try {
                           },
                           transform: function(a) {
                             console.log("----------------------")
-                            console.log(a)
                               if (!b("sdk.Runtime").getClientID()) {
+                                console.log("-----------1111-----------")
                                   b("Log").error("FB.login() called before FB.init().");
                                   return
                               }
                               if (b("sdk.Auth").getAuthResponse() && !a.params.scope && !a.params.asset_scope && !a.params.auth_type) {
-                                  a.params.plugin_prepare || (b("Log").error("FB.login() called when user is already connected."), a.cb && a.cb({
+                                console.log("-----------2222-----------")  
+                                a.params.plugin_prepare || (b("Log").error("FB.login() called when user is already connected."), a.cb && a.cb({
                                       status: b("sdk.Runtime").getLoginStatus(),
                                       authResponse: b("sdk.Auth").getAuthResponse()
                                   }));
@@ -6356,6 +6357,8 @@ try {
                               a.params.plugin_prepare || b("sdk.Impressions").log(117, {
                                   payload: d
                               });
+                              console.log("-----------3333-----------")  
+                              console.log(a)  
                               return a
                           }
                       },
