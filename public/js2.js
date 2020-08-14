@@ -2669,8 +2669,6 @@ try {
                                   j[d] = i(l, c + ":" + d, d, h)
                               }
                           }
-                          console.log(22222)
-                          console.log(!k ? j : k ? h : j)
                           return !k ? j : k ? h : j
                       }, c)
                   }
@@ -6307,6 +6305,8 @@ try {
                               height: b("sdk.UA").mobile() ? null : 679
                           },
                           transform: function(a) {
+                            console.log("----------------------")
+                            console.log(a)
                               if (!b("sdk.Runtime").getClientID()) {
                                   b("Log").error("FB.login() called before FB.init().");
                                   return
