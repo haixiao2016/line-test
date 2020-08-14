@@ -2,7 +2,7 @@
  * @Author: small
  * @Description: Line login 
  * @Date: 2020-08-13 17:28:20
- * @LastEditTime: 2020-08-14 11:02:25
+ * @LastEditTime: 2020-08-14 11:51:20
  * @FilePath: /line-test/src/SDK/lineLogin.js
  */
 import { getUrlParams } from "./common"
@@ -60,6 +60,10 @@ class LineLogin {
     window.liff.login({
       redirectUri: this.redirectUri
     })
+  }
+  logout(cb) {
+    window.liff.logout()
+    cb && cb()
   }
 }
 

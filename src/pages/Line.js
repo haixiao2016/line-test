@@ -38,6 +38,11 @@ function Line() {
       setLoading(false)
     })
   }
+  function handleLogout() {
+    LiLogin.logout(function (res) {
+      setUserData(undefined)
+    })
+  }
   useEffect(() => {
     LiLogin = new LineLogin({
       liffId: "1654651020-nRqoNOA9",
@@ -53,11 +58,12 @@ function Line() {
           <>
             <Card
               hoverable
-              style={{ width: 240, marginTop: 40 }}
+              style={{ width: 240, marginTop: 40, marginBottom: 40 }}
               cover={<img alt="example" src={userData.pictureUrl} />}
             >
               <Meta title={userData.displayName} description={"用户ID:" + userData.userId} />
             </Card>
+            <Button type="primary" danger onClick={handleLogout}>line logout</Button>
             <ReactJson style={{ marginTop: 40, marginBottom: 40 }} src={userData} enableClipboard={false} />
           </> : null
       }

@@ -2,7 +2,7 @@
  * @Author: small
  * @Description: google login
  * @Date: 2020-08-13 18:02:17
- * @LastEditTime: 2020-08-14 11:32:11
+ * @LastEditTime: 2020-08-14 11:48:34
  * @FilePath: /line-test/src/SDK/googleLogin.js
  */
 class GoogleLogin {
@@ -37,6 +37,9 @@ class GoogleLogin {
       }, this.success, this.error)
       this.ready = true
     })
+  }
+  logout() {
+    
   }
 }
 

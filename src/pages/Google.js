@@ -39,6 +39,11 @@ function App() {
       setLoading(false)
     })
   }
+  // function handleLogout() {
+  //   GOLOGIN.logout(function (res) {
+  //     setUserData(undefined)
+  //   })
+  // }
   useEffect(() => {
     GOLOGIN = new GoogleLogin({
       client_id: "326196238770-r5t1hc8dfkf80jhbckbvp7qous2kk7b8.apps.googleusercontent.com",
@@ -54,11 +59,12 @@ function App() {
           <>
             <Card
               hoverable
-              style={{ width: 240, marginTop: 40 }}
+              style={{ width: 240, marginTop: 40, marginBottom: 40 }}
               cover={<img alt="example" src={userData.picture} />}
             >
               <Meta title={userData.name} description={"email:" + userData.email} />
             </Card>
+            {/* <Button type="primary" danger onClick={handleLogout}>facebook logout</Button> */}
             <ReactJson style={{ marginTop: 40, marginBottom: 40 }} src={userData} enableClipboard={false} />
           </> : null
       }

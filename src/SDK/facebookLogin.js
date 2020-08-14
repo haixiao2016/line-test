@@ -13,7 +13,7 @@ class FacebookLogin {
       return true
     }
     const facebookSignInAPI = document.createElement('script')
-    facebookSignInAPI.setAttribute('src', 'https://connect.facebook.net/en_US/sdk/debug.js')
+    facebookSignInAPI.setAttribute('src', 'https://connect.facebook.net/en_US/sdk.js')
     facebookSignInAPI.setAttribute('crossorigin', 'anonymous')
     facebookSignInAPI.setAttribute('async', true)
     facebookSignInAPI.setAttribute('defer', true)
