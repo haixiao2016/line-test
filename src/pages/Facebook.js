@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import FacebookLogin from '../SDK/facebookLogin';
 import axios from "axios";
 import { Button, Card, message } from 'antd';
+import ReactJson from 'react-json-view';
 const { Meta } = Card;
 let fbLogIn;
 
@@ -37,6 +38,11 @@ function App() {
       setLoading(false)
     })
   }
+  function handleLogout() {
+    fbLogIn.logout(function (res) {
+      setUserData(undefined)
+    })
+  }
   useEffect(() => {
     fbLogIn = new FacebookLogin({
       appId: "320868815625915",
@@ -48,13 +54,17 @@ function App() {
       <Button type="primary" onClick={handleSignin} loading={isLoading}>facebook login</Button>
       {
         userData ?
-          <Card
-            hoverable
-            style={{ width: 240, marginTop: 40 }}
-            cover={<img alt="example" src={userData.picture.data.url} />}
-          >
-            <Meta title={userData.name} description={"用户ID:" + userData.id} />
-          </Card> : null
+          <>
+            <Card
+              hoverable
+              style={{ width: 240, marginTop: 40, marginBottom: 40 }}
+              cover={<img alt="example" src={userData.picture.data.url} />}
+            >
+              <Meta title={userData.name} description={"email:" + userData.email} />
+            </Card>
+            <Button type="primary" danger onClick={handleLogout}>facebook logout</Button>
+            <ReactJson style={{ marginTop: 40, marginBottom: 40 }} src={userData} enableClipboard={false} />
+          </> : null
       }
     </div>
   );

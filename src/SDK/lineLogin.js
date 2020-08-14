@@ -2,7 +2,7 @@
  * @Author: small
  * @Description: Line login 
  * @Date: 2020-08-13 17:28:20
- * @LastEditTime: 2020-08-14 10:28:40
+ * @LastEditTime: 2020-08-14 11:02:25
  * @FilePath: /line-test/src/SDK/lineLogin.js
  */
 import { getUrlParams } from "./common"

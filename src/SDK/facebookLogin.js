@@ -66,6 +66,11 @@ class FacebookLogin {
       }
     }, {scope: 'email'});
   }
+  logout(cb) {
+    window.FB.logout(function(response) {
+      cb && cb(response)
+    });
+  }
 }
 
 export default FacebookLogin;

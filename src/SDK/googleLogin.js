@@ -2,7 +2,7 @@
  * @Author: small
  * @Description: google login
  * @Date: 2020-08-13 18:02:17
- * @LastEditTime: 2020-08-14 10:29:02
+ * @LastEditTime: 2020-08-14 11:32:11
  * @FilePath: /line-test/src/SDK/googleLogin.js
  */
 class GoogleLogin {
@@ -11,6 +11,7 @@ class GoogleLogin {
     this.el = options.el
     this.success = success
     this.error = error
+    this.ready = false
     this.init()
   }
   init() {
@@ -34,6 +35,7 @@ class GoogleLogin {
       auth2.attachClickHandler(this.el, {
         scope: 'profile email'
       }, this.success, this.error)
+      this.ready = true
     })
   }
 }

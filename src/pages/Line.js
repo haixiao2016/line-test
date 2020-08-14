@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LineLogin from '../SDK/lineLogin';
 import { Button, Card, message } from 'antd';
 import axios from "axios";
+import ReactJson from 'react-json-view';
 const { Meta } = Card;
 let LiLogin;
 
@@ -49,13 +50,16 @@ function Line() {
       <Button type="primary" onClick={handleSignin} loading={isLoading}>line login</Button>
       {
         userData ?
-          <Card
-            hoverable
-            style={{ width: 240, marginTop: 40 }}
-            cover={<img alt="example" src={userData.pictureUrl} />}
-          >
-            <Meta title={userData.displayName} description={"用户ID:" + userData.userId} />
-          </Card> : null
+          <>
+            <Card
+              hoverable
+              style={{ width: 240, marginTop: 40 }}
+              cover={<img alt="example" src={userData.pictureUrl} />}
+            >
+              <Meta title={userData.displayName} description={"用户ID:" + userData.userId} />
+            </Card>
+            <ReactJson style={{ marginTop: 40, marginBottom: 40 }} src={userData} enableClipboard={false} />
+          </> : null
       }
     </div>
   );

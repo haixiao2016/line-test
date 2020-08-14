@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import GoogleLogin from '../SDK/googleLogin';
 import axios from "axios";
 import { Button, Card, message } from 'antd';
+import ReactJson from 'react-json-view';
 const { Meta } = Card;
+let GOLOGIN;
 
 function App() {
   const [userData, setUserData] = useState(undefined);
@@ -14,6 +16,13 @@ function App() {
   }
   function onSuccess(userMsg) {
     getUserInfo(userMsg)
+  }
+  function handleLogin() {
+    if(!GOLOGIN.ready) {
+      message.error("相关资源未加载，请稍后再试")
+    } else {
+      setLoading(true)
+    }
   }
   function getUserInfo({ wc }) {
     axios.get("https://www.haixiao.online/api/google/userInfoBySDK", {
@@ -31,7 +40,7 @@ function App() {
     })
   }
   useEffect(() => {
-    new GoogleLogin({
+    GOLOGIN = new GoogleLogin({
       client_id: "326196238770-r5t1hc8dfkf80jhbckbvp7qous2kk7b8.apps.googleusercontent.com",
       el: document.querySelector(".google-btn-signin")
     }, onSuccess, onError)
@@ -39,16 +48,19 @@ function App() {
   }, []);
   return (
     <div className="google">
-      <Button className="google-btn-signin" type="primary" onClick={() => setLoading(true)} loading={isLoading}>google login</Button>
+      <Button className="google-btn-signin" type="primary" onClick={handleLogin} loading={isLoading}>google login</Button>
       {
         userData ?
-          <Card
-            hoverable
-            style={{ width: 240, marginTop: 40 }}
-            cover={<img alt="example" src={userData.picture} />}
-          >
-            <Meta title={userData.name} description={"email:" + userData.email} />
-          </Card> : null
+          <>
+            <Card
+              hoverable
+              style={{ width: 240, marginTop: 40 }}
+              cover={<img alt="example" src={userData.picture} />}
+            >
+              <Meta title={userData.name} description={"email:" + userData.email} />
+            </Card>
+            <ReactJson style={{ marginTop: 40, marginBottom: 40 }} src={userData} enableClipboard={false} />
+          </> : null
       }
     </div>
   );
