@@ -2146,6 +2146,7 @@ try {
                       function f(c, f) {
                           return function() {
                             console.log("----- login ------")
+                            console.log(a)
                               if (!a) return c.apply(this, arguments);
                               console.log(2)
                               try {
