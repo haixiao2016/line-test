@@ -2147,10 +2147,14 @@ try {
                           return function() {
                             console.log("----- login ------")
                               if (!a) return c.apply(this, arguments);
+                              console.log(2)
                               try {
+                                console.log(3)
                                   d = f;
                                   return c.apply(this, arguments)
+                                  console.log(4)
                               } catch (a) {
+                                console.log(5)
                                   if (a instanceof b("ManagedError")) throw a;
                                   var g = b("normalizeError")(a);
                                   g.entry = f;
@@ -2161,6 +2165,7 @@ try {
                                   g.args = ES("JSON", "stringify", !1, h).substring(0, 200);
                                   e(g)
                               } finally {
+                                console.log(6)
                                   d = ""
                               }
                           }
