@@ -52,7 +52,6 @@ function Line() {
   }, []);
   return (
     <div className="google">
-      <Button type="primary" onClick={handleSignin} loading={isLoading}>line login</Button>
       {
         userData ?
           <>
@@ -65,7 +64,7 @@ function Line() {
             </Card>
             <Button type="primary" danger onClick={handleLogout}>line logout</Button>
             <ReactJson style={{ marginTop: 40, marginBottom: 40 }} src={userData} enableClipboard={false} />
-          </> : null
+          </> : <Button type="primary" onClick={handleSignin} loading={isLoading}>line login</Button>
       }
     </div>
   );

@@ -53,7 +53,6 @@ function App() {
   }, []);
   return (
     <div className="google">
-      <Button className="google-btn-signin" type="primary" onClick={handleLogin} loading={isLoading}>google login</Button>
       {
         userData ?
           <>
@@ -66,7 +65,7 @@ function App() {
             </Card>
             {/* <Button type="primary" danger onClick={handleLogout}>facebook logout</Button> */}
             <ReactJson style={{ marginTop: 40, marginBottom: 40 }} src={userData} enableClipboard={false} />
-          </> : null
+          </> : <Button className="google-btn-signin" type="primary" onClick={handleLogin} loading={isLoading}>google login</Button>
       }
     </div>
   );
