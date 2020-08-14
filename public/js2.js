@@ -2146,16 +2146,12 @@ try {
                       function f(c, f) {
                           return function() {
                             console.log("----- login ------")
-                            console.log(a)
+                            console.log(c)
                               if (!a) return c.apply(this, arguments);
-                              console.log(2)
                               try {
-                                console.log(3)
                                   d = f;
                                   return c.apply(this, arguments)
-                                  console.log(4)
                               } catch (a) {
-                                console.log(5)
                                   if (a instanceof b("ManagedError")) throw a;
                                   var g = b("normalizeError")(a);
                                   g.entry = f;
@@ -2166,7 +2162,6 @@ try {
                                   g.args = ES("JSON", "stringify", !1, h).substring(0, 200);
                                   e(g)
                               } finally {
-                                console.log(6)
                                   d = ""
                               }
                           }
@@ -2657,8 +2652,11 @@ try {
 
                   function i(a, c, d, e) {
                       return b("sdk.ErrorHandling").guard(function() {
+                        console.log(1111)
                           function f(a) {
+                            console.log(2222)
                               if (ES("Array", "isArray", !1, a)) return ES(a, "map", !0, f);
+                              console.log(4444)
                               return a && typeof a === "object" && a.__wrapped ? a.__wrapped : typeof a === "function" && /^function/.test(a.toString()) ? b("sdk.ErrorHandling").unguard(a) : a
                           }
                           var g = ES(Array.prototype.slice.call(arguments), "map", !0, f),
@@ -2674,6 +2672,7 @@ try {
                                   j[d] = i(l, c + ":" + d, d, h)
                               }
                           }
+                          console.log(3333)
                           return !k ? j : k ? h : j
                       }, c)
                   }
