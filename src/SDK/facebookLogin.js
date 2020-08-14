@@ -13,7 +13,7 @@ class FacebookLogin {
       return true
     }
     const facebookSignInAPI = document.createElement('script')
-    facebookSignInAPI.setAttribute('src', 'https://connect.facebook.net/en_US/sdk.js')
+    facebookSignInAPI.setAttribute('src', 'https://connect.facebook.net/en_US/sdk/debug.js')
     facebookSignInAPI.setAttribute('crossorigin', 'anonymous')
     facebookSignInAPI.setAttribute('async', true)
     facebookSignInAPI.setAttribute('defer', true)
@@ -58,15 +58,13 @@ class FacebookLogin {
     console.log("手动登录 --- 跳转到登录页面")
     let _this = this
     window.FB.login(function (response) {
-      console.log("login 出结果了 ----")
-      console.log(response)
       if (response.authResponse) {
         _this.success(response.authResponse)
       } else {
         _this.error()
         console.log('User cancelled login or did not fully authorize.');
       }
-    });
+    }, {scope: 'email'});
   }
 }
 
