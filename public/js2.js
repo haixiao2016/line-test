@@ -5029,6 +5029,8 @@ try {
                   }
 
                   function C(a) {
+                    console.log("------- aaaa  ------")
+                    console.log(a)
                       a = new(b("sdk.URI"))(b("UrlMap").resolve("www").replace("web.", "www.") + "/x/oauth/status").addQueryData("client_id", b("sdk.Runtime").getClientID()).addQueryData("input_token", a).addQueryData("redirect_uri", window.location.href).addQueryData("origin", b("sdk.getContextType")()).addQueryData("sdk", "joey").addQueryData("wants_cookie_data", b("sdk.Runtime").getUseCookie());
                       if (window.location.ancestorOrigins) {
                           var c = window.location.ancestorOrigins;
@@ -6357,8 +6359,6 @@ try {
                               a.params.plugin_prepare || b("sdk.Impressions").log(117, {
                                   payload: d
                               });
-                              console.log("-----------3333-----------")  
-                              console.log(a)  
                               return a
                           }
                       },
