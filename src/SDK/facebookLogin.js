@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 class FacebookLogin {
   constructor(options, success, error) {
     this.appId = options.appId
@@ -9,6 +8,10 @@ class FacebookLogin {
     this.init()
   }
   init() {
+    if(window.FB) {
+      this.InitFacebookButton()
+      return true
+    }
     const facebookSignInAPI = document.createElement('script')
     facebookSignInAPI.setAttribute('src', 'https://connect.facebook.net/en_US/sdk.js')
     facebookSignInAPI.setAttribute('crossorigin', 'anonymous')
@@ -19,7 +22,7 @@ class FacebookLogin {
   }
 
   InitFacebookButton() {
-    FB.init({
+    window.FB.init({
       appId            : this.appId,
       autoLogAppEvents : true,
       xfbml            : true,
@@ -33,7 +36,7 @@ class FacebookLogin {
   getLoginStatus() {
     let _this = this
     return new Promise((resolve)=> {
-      FB.getLoginStatus(function(response) {
+      window.FB.getLoginStatus(function(response) {
         resolve(response.status)
         if(response.status === "connected") {
           _this.success(response.authResponse)
@@ -43,12 +46,12 @@ class FacebookLogin {
   }
   async login() {
     if(!this.isReady()) {
-      setTimeout(this.login(), 100)
+      return setTimeout(()=> this.login(), 100)
     }
     const status = await this.getLoginStatus()
     if( status === "connected") return false;
     let _this = this
-    FB.login(function(response) {
+    window.FB.login(function(response) {
       if (response.authResponse) {
         _this.success(response.authResponse)
       } else {
